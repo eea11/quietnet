@@ -95,19 +95,20 @@ psk = {
 '}'   :"1010110101",
 '~'   :"1011010111",
 }
-
+# I think that each line is converting the signs to binary for the computer to read.
 decode_psk = {}
 for k, v in psk.items():
     decode_psk[v] = k
-
+# I think lines 99-101 the author sets a value for decode_psk then he/she uses it, adds [v], and sets a new value.
 def encode(string):
     result = []
     for c in string:
         result.append(psk[c])
     return '00'.join(result) + '00'
-
+# They define encode as a string function and encode the result.
 def decode(string):
     try:
         return decode_psk[''.join([str(i) for i in string])]
     except:
         return ''
+# He/she decodes the previously encoded thing.
